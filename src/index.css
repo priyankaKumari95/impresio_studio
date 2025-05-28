@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom select option hover styling */
+
+select option:focus,
+select option:active,
+select option:checked,
+select option:hover {
+  background: #de3cab linear-gradient(0deg, #de3cab 0%, #de3cab 100%) !important;
+  color: white !important;
+}
+
+select option:hover {
+  background: #de3cab linear-gradient(0deg, #de3cab 0%, #de3cab 100%) !important;
+  color: white !important;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] {
+  accent-color: #de3cab;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #de3cab;
+  border-color: #de3cab;
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #e2e8f0;
+  height: 4px;
+  border-radius: 2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -6px;
+  background-color: #de3cab;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(222, 60, 171, 0.2); /* rgba for #de3cab */
+}

@@ -34,7 +34,7 @@ const FilterBar = ({ onFilterChange }) => {
         <input
           type="text"
           placeholder="Search by name, location, or tag..."
-          className="w-full border rounded-lg px-4 py-2"
+          className="w-full border border-gray-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
           value={filters.searchQuery}
           onChange={(e) => handleFilterChange('searchQuery', e.target.value)}
         />
@@ -50,17 +50,21 @@ const FilterBar = ({ onFilterChange }) => {
             max="50000"
             step="1000"
             value={filters.priceRange[1]}
-            onChange={(e) => handleFilterChange('priceRange', [5000, parseInt(e.target.value)])}
-            className="w-full"
+            onChange={(e) =>
+              handleFilterChange('priceRange', [5000, parseInt(e.target.value)])
+            }
+            className="w-full border border-gray-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
           />
-          <div className="text-sm text-gray-600">₹5,000 - ₹{filters.priceRange[1].toLocaleString()}</div>
+          <div className="text-sm text-gray-600">
+            ₹5,000 - ₹{filters.priceRange[1].toLocaleString()}
+          </div>
         </div>
 
         {/* Rating Filter */}
         <div>
           <label className="block text-sm font-medium mb-2">Minimum Rating</label>
           <select
-            className="w-full border rounded-lg px-3 py-2"
+            className="w-full border rounded-full px-3 py-2 focus:ring-2 focus:ring-accent focus:border-transparent hover:border-accent cursor-pointer [&>option:hover]:bg-[#de3cab] [&>option:hover]:text-white"
             value={filters.rating}
             onChange={(e) => handleFilterChange('rating', parseFloat(e.target.value))}
           >
@@ -75,13 +79,15 @@ const FilterBar = ({ onFilterChange }) => {
         <div>
           <label className="block text-sm font-medium mb-2">City</label>
           <select
-            className="w-full border rounded-lg px-3 py-2"
+            className="w-full border rounded-full px-3 py-2 focus:ring-2 focus:ring-accent focus:border-transparent hover:border-accent cursor-pointer [&>option:hover]:bg-[#de3cab] [&>option:hover]:text-white"
             value={filters.city}
             onChange={(e) => handleFilterChange('city', e.target.value)}
           >
             <option value="">All Cities</option>
-            {cities.map(city => (
-              <option key={city} value={city}>{city}</option>
+            {cities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
             ))}
           </select>
         </div>
@@ -90,7 +96,7 @@ const FilterBar = ({ onFilterChange }) => {
         <div className="md:col-span-2 lg:col-span-3">
           <label className="block text-sm font-medium mb-2">Photography Styles</label>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {photographyStyles.map(style => (
+            {photographyStyles.map((style) => (
               <label key={style} className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -98,10 +104,10 @@ const FilterBar = ({ onFilterChange }) => {
                   onChange={(e) => {
                     const newStyles = e.target.checked
                       ? [...filters.styles, style]
-                      : filters.styles.filter(s => s !== style)
+                      : filters.styles.filter((s) => s !== style)
                     handleFilterChange('styles', newStyles)
                   }}
-                  className="rounded"
+                  className="h-4 w-4 rounded-full border-gray-300 text-[#de3cab] focus:ring-[#de3cab] transition-colors duration-200 cursor-pointer"
                 />
                 <span>{style}</span>
               </label>
@@ -113,7 +119,7 @@ const FilterBar = ({ onFilterChange }) => {
         <div>
           <label className="block text-sm font-medium mb-2">Sort By</label>
           <select
-            className="w-full border rounded-lg px-3 py-2"
+            className="w-full border rounded-full px-3 py-2 focus:ring-2 focus:ring-accent focus:border-transparent hover:border-accent cursor-pointer [&>option:hover]:bg-[#de3cab] [&>option:hover]:text-white"
             value={filters.sortBy}
             onChange={(e) => handleFilterChange('sortBy', e.target.value)}
           >
