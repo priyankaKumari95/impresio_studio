@@ -20,7 +20,7 @@ const PhotographerProfile = () => {
   useEffect(() => {
     const fetchPhotographer = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/photographers/${id}`)
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/photographers/${id}`)
         setPhotographer(response.data)
         setLoading(false)
       } catch (err) {

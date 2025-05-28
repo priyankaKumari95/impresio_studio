@@ -12,7 +12,7 @@ const CategoryListing = () => {
   useEffect(() => {
     const fetchPhotographers = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/photographers')
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/photographers`)
         setPhotographers(response.data)
         setFilteredPhotographers(response.data)
         setLoading(false)
@@ -27,7 +27,7 @@ const CategoryListing = () => {
 
   const handleFilterChange = (filters) => {
     setLoading(true)
-    
+
     // Simulate API delay
     setTimeout(() => {
       let filtered = [...photographers]
@@ -84,14 +84,6 @@ const CategoryListing = () => {
     }, 500)
   }
 
-  if (error) {
-    return (
-      <div className="container mx-auto px-4 py-8">
-        <div className="bg-red-50 text-red-600 p-4 rounded-lg">{error}</div>
-      </div>
-    )
-  }
-
   // Rest of the component remains the same, but use filteredPhotographers instead of photographers
   const [page, setPage] = useState(1)
   const photographersPerPage = 6
@@ -103,10 +95,18 @@ const CategoryListing = () => {
 
   const displayedPhotographers = filteredPhotographers.slice(0, page * photographersPerPage)
 
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-red-50 text-red-600 p-4 rounded-lg">{error}</div>
+      </div>
+    )
+  }
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Maternity Photographers in Bengaluru</h1>
-      
+
       {/* Filters */}
       <FilterBar onFilterChange={handleFilterChange} />
 
